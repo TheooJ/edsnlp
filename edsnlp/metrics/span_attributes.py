@@ -70,7 +70,6 @@ def span_attribute_metric(
         filter_fn = eval(f"lambda doc: {filter_expr}")
         examples = [eg for eg in examples if filter_fn(eg.reference)]
     labels = defaultdict(lambda: (set(), set(), dict()))
-    labels["micro"] = (set(), set(), dict())
     total_pred_count = 0
     total_gold_count = 0
 

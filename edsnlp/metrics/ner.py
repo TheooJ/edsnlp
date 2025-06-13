@@ -92,7 +92,6 @@ def ner_token_metric(
         examples = [eg for eg in examples if filter_fn(eg.reference)]
     # label -> pred, gold
     labels = defaultdict(lambda: (set(), set()))
-    labels["micro"] = (set(), set())
     for eg_idx, eg in enumerate(examples):
         for span in (
             span_getter(eg.predicted)
@@ -160,7 +159,6 @@ def ner_overlap_metric(
         examples = [eg for eg in examples if filter_fn(eg.reference)]
     # label -> pred, gold, matched_pred, matched_gold
     counters = defaultdict(lambda: [0, 0, 0, 0])
-    counters["micro"] = [0, 0, 0, 0]
     for eg_idx, eg in enumerate(examples):
         pred_spans = set(
             span_getter(eg.predicted)
